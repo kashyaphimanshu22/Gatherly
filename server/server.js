@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
+const cors = require("cors");
 
 dotenv.config();
 
@@ -14,7 +14,14 @@ const bookingRoutes = require('./routes/bookings');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://gatherly-frontend-nine.vercel.app"
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Routes
